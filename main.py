@@ -5,6 +5,7 @@ from utils.ml_detector import AnomalyDetector
 from utils.visualizer import LogVisualizer
 from utils.report_generator import ReportGenerator
 import base64
+import streamlit.components.v1 as components 
 
 # Page configuration
 st.set_page_config(
@@ -20,6 +21,15 @@ visualizer = LogVisualizer()
 report_generator = ReportGenerator()
 
 # Custom CSS
+hide_elements = """
+    <style>
+    [class*="deploy-button"], [class*="options-button"] {
+        display: none !important;
+    }
+    </style>
+"""
+components.html(hide_elements, height=0)
+
 st.markdown("""
     <style>
     .main {
